@@ -26,9 +26,7 @@ class _HorizontalScreenState extends State<HorizontalScreen> {
                 _isHorizontal = !_isHorizontal;
               });
             },
-            icon: _isHorizontal
-                ? const Icon(Icons.swap_horizontal_circle)
-                : const Icon(Icons.swap_vert_circle),
+            icon: _isHorizontal ? const Icon(Icons.swap_horizontal_circle) : const Icon(Icons.swap_vert_circle),
           )
         ],
       ),
@@ -47,7 +45,7 @@ class _HorizontalScreenState extends State<HorizontalScreen> {
               ),
             );
           },
-          onRefresh: () => Future.delayed(const Duration(seconds: 2)),
+          onRefresh: (t) => Future.delayed(const Duration(seconds: 2)),
           child: ExampleHorizontalList(
             leading: const ListHelpBox(
               child: Text(
