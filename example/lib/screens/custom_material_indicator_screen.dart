@@ -7,12 +7,10 @@ class CustomMaterialIndicatorScreen extends StatefulWidget {
   const CustomMaterialIndicatorScreen({super.key});
 
   @override
-  State<CustomMaterialIndicatorScreen> createState() =>
-      _CustomMaterialIndicatorScreenState();
+  State<CustomMaterialIndicatorScreen> createState() => _CustomMaterialIndicatorScreenState();
 }
 
-class _CustomMaterialIndicatorScreenState
-    extends State<CustomMaterialIndicatorScreen> {
+class _CustomMaterialIndicatorScreenState extends State<CustomMaterialIndicatorScreen> {
   final _controller = IndicatorController();
 
   bool _useCustom = true;
@@ -47,9 +45,7 @@ class _CustomMaterialIndicatorScreenState
       ),
       itemCount: 12,
       physics: AlwaysScrollableScrollPhysics(
-        parent: _useCustom
-            ? ClampingWithOverscrollPhysics(state: _controller)
-            : const ClampingScrollPhysics(),
+        parent: _useCustom ? ClampingWithOverscrollPhysics(state: _controller) : const ClampingScrollPhysics(),
       ),
     );
     return Scaffold(
@@ -70,7 +66,7 @@ class _CustomMaterialIndicatorScreenState
                   clipBehavior: Clip.antiAlias,
                   trigger: IndicatorTrigger.bothEdges,
                   triggerMode: IndicatorTriggerMode.anywhere,
-                  onRefresh: () => Future.delayed(const Duration(seconds: 2)),
+                  onRefresh: (t) => Future.delayed(const Duration(seconds: 2)),
                   child: child,
                 )
               : RefreshIndicator(

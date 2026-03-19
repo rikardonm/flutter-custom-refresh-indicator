@@ -15,7 +15,7 @@ class FetchMoreIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     const height = 150.0;
     return CustomRefreshIndicator(
-      onRefresh: () async => onAction(),
+      onRefresh: (t) async => onAction(),
       trigger: IndicatorTrigger.trailingEdge,
       trailingScrollIndicatorVisible: false,
       leadingScrollIndicatorVisible: true,
@@ -31,8 +31,7 @@ class FetchMoreIndicator extends StatelessWidget {
         return AnimatedBuilder(
             animation: controller,
             builder: (context, _) {
-              final dy = controller.value.clamp(0.0, 1.25) *
-                  -(height - (height * 0.25));
+              final dy = controller.value.clamp(0.0, 1.25) * -(height - (height * 0.25));
               return Stack(
                 children: [
                   child,
@@ -44,11 +43,7 @@ class FetchMoreIndicator extends StatelessWidget {
                         transform: Matrix4.translationValues(0.0, dy, 0.0),
                         child: switch (controller.state) {
                           IndicatorState.idle => null,
-                          IndicatorState.dragging ||
-                          IndicatorState.canceling ||
-                          IndicatorState.armed ||
-                          IndicatorState.settling =>
-                            const Column(
+                          IndicatorState.dragging || IndicatorState.canceling || IndicatorState.armed || IndicatorState.settling => const Column(
                               children: [
                                 Icon(Icons.keyboard_arrow_up),
                                 Text("Pull to fetch more"),
@@ -67,9 +62,7 @@ class FetchMoreIndicator extends StatelessWidget {
                                 const Text("Fetching..."),
                               ],
                             ),
-                          IndicatorState.complete ||
-                          IndicatorState.finalizing =>
-                            const Text("Fetched 🚀"),
+                          IndicatorState.complete || IndicatorState.finalizing => const Text("Fetched 🚀"),
                         }),
                   ),
                 ],
