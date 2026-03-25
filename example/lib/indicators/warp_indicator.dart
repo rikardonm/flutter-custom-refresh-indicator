@@ -1,8 +1,8 @@
 import 'dart:math';
 
+import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -222,7 +222,7 @@ class Star {
     );
     final t = speedScale / maxSpeedScale;
     final opacity = _minOpacity + (_maxOpacity - _minOpacity) * t;
-    color = initialColor.withOpacity(opacity);
+    color = initialColor.withAlpha((opacity * 255).round().clamp(0, 255));
   }
 
   draw(Canvas canvas, Rect rect) {

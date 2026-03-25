@@ -143,7 +143,7 @@ class _PresentationScreenState extends State<PresentationScreen> {
                                       alignment: Alignment.centerRight,
                                       child: Switch(
                                         value: _controller.isRefreshEnabled,
-                                        activeColor: Colors.lightGreen,
+                                        activeThumbColor: Colors.lightGreen,
                                         onChanged: (isEnabled) => isEnabled ? _controller.enableRefresh() : _controller.disableRefresh(),
                                       ),
                                     ),

@@ -1,6 +1,5 @@
 import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 /// A function type that builds a material-style indicator widget.
@@ -284,12 +283,13 @@ class _CustomMaterialIndicatorState extends State<CustomMaterialIndicator> {
     _backgroundColor = _getBackgroundColor();
     _indicatorColor = _getIndicatorColor();
     final Color color = _indicatorColor;
-    if (color.alpha == 0x00) {
+    final cA = (color.a * 255).round().clamp(0, 255);
+    if (cA == 0x00) {
       // Set an always stopped animation instead of a driven tween.
       _colorAnimation = AlwaysStoppedAnimation<Color>(color);
     } else {
       // Respect the alpha of the given color.
-      _colorAnimation = _valueAnimation.drive(ColorTween(begin: color.withAlpha(0), end: color.withAlpha(color.alpha)).chain(CurveTween(curve: const Interval(0.0, 1.0 / 1.5))));
+      _colorAnimation = _valueAnimation.drive(ColorTween(begin: color.withAlpha(0), end: color.withAlpha(cA)).chain(CurveTween(curve: const Interval(0.0, 1.0 / 1.5))));
     }
   }
 
