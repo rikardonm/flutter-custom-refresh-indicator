@@ -13,7 +13,7 @@ class FakeRefresh {
   bool _called = false;
   bool get called => _called;
 
-  Future<void> refresh() async {
+  Future<void> refresh(IndicatorTrigger trigger) async {
     _called = true;
     return _completer.future;
   }

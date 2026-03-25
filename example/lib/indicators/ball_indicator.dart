@@ -292,7 +292,6 @@ class _BallIndicatorState extends State<BallIndicator> with TickerProviderStateM
                   animation: controller,
                   builder: (context, child) {
                     final event = controller.dragDetails;
-
                     final double angle;
                     if (event != null) {
                       _lastAngle = angle = _calculateAngle(

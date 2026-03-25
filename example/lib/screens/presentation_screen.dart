@@ -147,9 +147,7 @@ class _PresentationScreenState extends State<PresentationScreen> {
                                       child: Switch(
                                         value: _controller.isRefreshEnabled,
                                         activeThumbColor: Colors.lightGreen,
-                                        onChanged: (isEnabled) => isEnabled
-                                            ? _controller.enableRefresh()
-                                            : _controller.disableRefresh(),
+                                        onChanged: (isEnabled) => isEnabled ? _controller.enableRefresh() : _controller.disableRefresh(),
                                       ),
                                     ),
                                   ],
