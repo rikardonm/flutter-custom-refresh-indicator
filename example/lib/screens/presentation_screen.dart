@@ -122,12 +122,14 @@ class _PresentationScreenState extends State<PresentationScreen> {
                                         TableRow(
                                           children: [
                                             const Text("dragDetails.delta:"),
+                                            // ignore: experimental_member_use
                                             Text('${_controller.dragDetails?.delta}'),
                                           ],
                                         ),
                                         TableRow(
                                           children: [
                                             const Text("dragDetails.localPosition:"),
+                                            // ignore: experimental_member_use
                                             Text('${_controller.dragDetails?.localPosition}'),
                                           ],
                                         ),
